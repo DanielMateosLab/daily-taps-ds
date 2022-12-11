@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  transition: all 0.25s linear;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body,
+  #story-root {
+    --primary: 107, 33, 168;
+    @apply dark;
+  }
+
+  .dark {
+    --surface-1: 15, 23, 42;
+    --surface-2: 51, 65, 85;
+    --on-surface-normal: 249, 250, 251;
+    --on-surface-light: 203, 213, 225;
+    --primary-contrast: 167, 139, 250;
+  }
+
+  .light {
+    --surface-1: 226, 232, 240;
+    --surface-2: 250, 250, 250;
+    --on-surface-normal: 15, 23, 42;
+    --on-surface-light: 51, 65, 85;
+    --primary-contrast: 91, 33, 182;
+  }
+
+  @media (prefers-color-scheme: light) {
+    body {
+      @apply light;
+    }
+  }
+}
+
+@supports (size: 0svh) {
+  .min-h-screen {
+    min-height: 100svh;
+  }
+}
